@@ -6,9 +6,16 @@ export default mergeConfig(
   viteConfig,
   defineConfig({
     test: {
+      publicPath: process.env.NODE_ENV === 'production' ? '/vue1-2/' : '/',
       environment: 'jsdom',
       exclude: [...configDefaults.exclude, 'e2e/**'],
       root: fileURLToPath(new URL('./', import.meta.url)),
     },
   }),
 )
+
+// const { defineConfig } = require('@vue/cli-service')
+// module.exports = defineConfig({
+//   publicPath: process.env.NODE_ENV === 'production' ? '/testttt/' : '/',
+//   transpileDependencies: true
+// })
